@@ -43,27 +43,25 @@ function Carasol() {
           <div className="carousel-inner">
             <div className="customCarasol carousel-item active">
               <img
-                src="http://placekitten.com/1920/900"
+                src="http://placekitten.com/1920/1200"
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Some representative placeholder content for the first slide.
-                </p>
+                <h5 style={{ color: "gray" }}>Sale</h5>
+                <p style={{ color: "gray" }}>We provide quality not quantity</p>
               </div>
             </div>
 
             <div className=" carousel-item img-gradient">
               <img
-                src="http://placekitten.com/1920/900"
+                src="http://placekitten.com/1920/1195"
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
+                <h5 style={{ color: "gray" }}>Second slide label</h5>
+                <p style={{ color: "gray" }}>
                   Some representative placeholder content for the second slide.
                 </p>
               </div>
@@ -71,13 +69,13 @@ function Carasol() {
 
             <div className=" carousel-item  bg-gradient">
               <img
-                src="http://placekitten.com/1920/900"
+                src="http://placekitten.com/1920/1205"
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
+                <h5 style={{ color: "gray" }}>Third slide label</h5>
+                <p style={{ color: "gray" }}>
                   Some representative placeholder content for the third slide.
                 </p>
               </div>

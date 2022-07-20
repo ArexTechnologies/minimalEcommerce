@@ -28,7 +28,7 @@ function Navbar() {
           <Link
             style={{ fontWeight: "bolder", fontSize: "2rem" }}
             className="navbar-brand"
-            to='/'
+            to="/"
           >
             KotaBazar
           </Link>
@@ -90,7 +90,9 @@ function Navbar() {
             </ul>
             <form className="d-flex">
               {userInfo ? (
-                <button  className="btn btn-outline-success mx-2" >{userInfo.name}</button>
+                <button className="btn btn-outline-success mx-2">
+                  {userInfo.name}
+                </button>
               ) : (
                 <button className="btn btn-outline-success">Sign In</button>
               )}
@@ -104,21 +106,16 @@ function Navbar() {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button> */}
-              <button onClick={openCartHandler}
+              <button
+                onClick={openCartHandler}
                 type="button"
-                
                 style={{ display: "block", float: "right" }}
                 className="btn btn-outline-primary mx-1"
               >
-                Cart {cart.cartItems.length  }
+                Cart {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
               </button>
               {isLoggedIn && (
-                <button
-                  className="btn btn-dark logoutButton"
-                  
-                >
-                  Logout
-                </button>
+                <button className="btn btn-dark logoutButton">Logout</button>
               )}
             </form>
           </div>
