@@ -21,8 +21,11 @@ orderRouter.post(
   '/',
   isAuth,
   expressAsyncHandler(async (req, res) => {
+    // let reqArray = Array.from(req.body.orderItems)
+   // console.log(req.body.orderItems.map((x) => { return ({...x, product : x.id})}))
+    console.log(req.user._id)
     const newOrder = new Order({
-      orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
+      orderItems: req.body.orderItems.map((x) => { return ({...x, product : x.id})}),
       shippingAddress: req.body.shippingAddress,
       paymentMethod: req.body.paymentMethod,
       itemsPrice: req.body.itemsPrice,
@@ -31,9 +34,16 @@ orderRouter.post(
       totalPrice: req.body.totalPrice,
       user: req.user._id,
     });
-
-    const order = await newOrder.save();
-    res.status(201).send({ message: 'New Order Created', order });
+try {
+  const order = await newOrder.save();
+  console.log('order saved')
+  res.status(201).send({ message: "New Order Created", order });
+} catch (error) {
+   console.log(error);
+}
+  
+  
+    
   })
 );
 

@@ -4,7 +4,7 @@ import { Store } from "../Store";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useContext, useState, useEffect } from "react";
 
-export default function SigninScreen() {
+export default function SignUpScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
@@ -43,8 +43,17 @@ const [name, setName] = useState("");
 
   return (
     <section className="customForm ">
-      <h1> Login</h1>
+      <h1> Signup</h1>
       <form className="customInput" onSubmit={submitHandler}>
+        <div className="form-group">
+          <label htmlFor="exampleInputName1">Your Name</label>
+          <input
+            className="form-control"
+            type="text"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Your Email</label>
           <input
@@ -68,7 +77,6 @@ const [name, setName] = useState("");
           <input
             className="form-control"
             type="password"
-           
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />

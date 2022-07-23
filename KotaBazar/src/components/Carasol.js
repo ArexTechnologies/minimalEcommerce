@@ -1,6 +1,10 @@
 import React, { Fragment, useContext } from "react";
 import { Store } from "../Store.js";
+import sales from '../../src/5785216.jpg'
+import sales2 from '../4902560.jpg'
 import Cards from "./Cards/Cards.jsx";
+import sales3 from '../4927863.jpg'
+import fruits from '../aug_2_04.jpg'
 import "./styles.css"
 
 function Carasol() {
@@ -12,7 +16,7 @@ function Carasol() {
 
   return (
     <Fragment>
-      <div className="row">
+      <div className="row carouselPerfecter">
         <div
           id="carouselExampleIndicators"
           className="customCarasol carousel slide"
@@ -43,41 +47,37 @@ function Carasol() {
           <div className="carousel-inner">
             <div className="customCarasol carousel-item active">
               <img
-                src="http://placekitten.com/1920/1200"
+                src={sales3}
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5 style={{ color: "gray" }}>Sale</h5>
-                <p style={{ color: "gray" }}>We provide quality not quantity</p>
+                <h5 style={{ color: "gray" }}></h5>
+                <p style={{ color: "gray" }}></p>
               </div>
             </div>
 
             <div className=" carousel-item img-gradient">
               <img
-                src="http://placekitten.com/1920/1195"
+                src={sales}
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5 style={{ color: "gray" }}>Second slide label</h5>
-                <p style={{ color: "gray" }}>
-                  Some representative placeholder content for the second slide.
-                </p>
+                <h5 style={{ color: "gray" }}></h5>
+                <p style={{ color: "gray" }}></p>
               </div>
             </div>
 
             <div className=" carousel-item  bg-gradient">
               <img
-                src="http://placekitten.com/1920/1205"
+                src={sales2}
                 className="customGradient d-block w-100"
                 alt="..."
               />
               <div className="carousel-caption d-none d-md-block">
-                <h5 style={{ color: "gray" }}>Third slide label</h5>
-                <p style={{ color: "gray" }}>
-                  Some representative placeholder content for the third slide.
-                </p>
+                <h5 style={{ color: "gray" }}></h5>
+                <p style={{ color: "gray" }}></p>
               </div>
             </div>
           </div>
@@ -112,8 +112,15 @@ function Carasol() {
           </div>
         </div>
       </div>
-      <div className="flexPro">
-        <Cards />
+      <div className="flexPro ">
+        <Cards />  <img style={{overflow : "auto",height : "18rem",width : "47rem",marginLeft : "1.5rem",borderRadius : "25px",cursor : "pointer"}} src={fruits} alt="fruits" />
+      </div>
+      <div style={{ margin: "2rem", marginTop : "4rem" }}>
+        <h2 style={{marginLeft : "1rem"}}>Products you will definately love ❤️</h2>
+        <div className="scroll">
+          
+          <Cards />
+        </div>
       </div>
     </Fragment>
   );

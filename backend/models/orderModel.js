@@ -1,19 +1,20 @@
 import mongoose from 'mongoose';
-
+import crypto from 'crypto'
 const orderSchema = new mongoose.Schema(
   {
     orderItems: [
       {
-        slug: { type: String, required: true },
-        name: { type: String, required: true },
+        id: { type: String, required: true },
+        title: { type: String, required: true },
         quantity: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Product',
-          required: true,
-        },
+        // product: {
+        //   type: mongoose.Schema.Types.ObjectId,
+        //  // default: crypto.randomBytes(12).toString("hex"), 
+        //   ref: "Product",
+        //   required: true,
+        // },   
       },
     ],
     shippingAddress: {
@@ -22,14 +23,6 @@ const orderSchema = new mongoose.Schema(
       city: { type: String, required: true },
       postalCode: { type: String, required: true },
       country: { type: String, required: true },
-      location: {
-        lat: Number,
-        lng: Number,
-        address: String,
-        name: String,
-        vicinity: String,
-        googleAddressId: String,
-      },
     },
     paymentMethod: { type: String, required: true },
     paymentResult: {
@@ -42,7 +35,7 @@ const orderSchema = new mongoose.Schema(
     shippingPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required : true },
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     isDelivered: { type: Boolean, default: false },

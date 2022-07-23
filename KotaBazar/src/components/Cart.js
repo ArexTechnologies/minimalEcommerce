@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import Navbar from "./Navbar";
 import { Store } from "../Store";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,7 +12,7 @@ export default function Cart() {
   const navigate = useNavigate(Store);
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { cartItems },
+    cart: { cartItems }, userInfo
   } = state;
   
 
@@ -30,11 +29,12 @@ export default function Cart() {
   };
 
   const checkoutHandler = () => {
-    navigate("/signin?redirect=/shipping");
+    if(userInfo){ navigate("/shipping")} else{navigate("/signin")}
+   
   };
   return (
     <>
-      <Navbar />
+    
 
       <Row>
         <Col md={8}>

@@ -1,6 +1,8 @@
 import './styles.css'
-import React, { Fragment, useContext,useState} from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
+import  Axios  from 'axios';
 import AuthContext from "./auth-context";
+import Badge from 'react-bootstrap/Badge'
 import { Link , useNavigate} from "react-router-dom";
 import { Store } from '../Store';
 
@@ -14,13 +16,22 @@ function Navbar() {
   const isLoggedIn = userCtx.isLoggedIn;
  
   const navigate = useNavigate()
-  
+  const [cats, setCats] = useState([])
  
     // console.log(cart)          
   function openCartHandler() {
     navigate('/cart')
   }
-
+  useEffect(() => {
+    const xxx = async () => {
+      const { data } = await Axios.get("https://fakestoreapi.com/products/categories")
+      
+      setCats(data)
+    }
+   xxx()
+    
+  }, [])
+  
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,27 +75,19 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Categories
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
+                     
+                { cats.map((x,i)=>{ return (
+                  <li key={i}>
                     <a className="dropdown-item" href="/">
-                      Action
+                      {x}
                     </a>
                   </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Something else here
-                    </a>
-                  </li>
+                )})}
+                  
+              
                 </ul>
               </li>
             </ul>
@@ -94,10 +97,17 @@ function Navbar() {
                   {userInfo.name}
                 </button>
               ) : (
-                <button className="btn btn-outline-success">Sign In</button>
+                <button
+                  onClick={() => {
+                    navigate("./signin");
+                  }}
+                  className="btn btn-outline-success"
+                >
+                  Sign In
+                </button>
               )}
               {/* search functionality 👇🏻 */}
-              {/* <input
+               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
@@ -105,18 +115,15 @@ function Navbar() {
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
-              </button> */}
-              <button
-                onClick={openCartHandler}
-                type="button"
-                style={{ display: "block", float: "right" }}
-                className="btn btn-outline-primary mx-1"
-              >
-                Cart {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-              </button>
-              {isLoggedIn && (
-                <button className="btn btn-dark logoutButton">Logout</button>
-              )}
+              </button> 
+              <Link to="/cart" className="nav-link">
+              
+                {cart.cartItems.length > 0 && (
+                  <Badge pill bg="danger">
+                    {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                  </Badge>
+                )}
+              </Link>
             </form>
           </div>
         </div>

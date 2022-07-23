@@ -37,7 +37,7 @@ app.use("/api/bambora", index);
 app.use('/api/upload', uploadRouter);
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
-app.use('/api/users', userRouter);
+app.use('/api/users', userRouter); 
 app.use('/api/orders', orderRouter);
 
 

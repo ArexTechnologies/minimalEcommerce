@@ -35,7 +35,7 @@ function Cards(props) {
         data
        );
        setWantData(data.map((x) => { return x.id }));
-       console.log("this is wantdata ",{wantData})
+       
      })
      .catch((err) => {
        alert(err.message);
@@ -61,15 +61,15 @@ function Cards(props) {
   
   return (
     <>
-      {products.map((product,index) => 
+      {products.slice(0,5).map((product,index) => 
       { 
         return (     
-        <div className="col-md-4 " key={index}>
+        <div className="col-md-3 col-6 cardFronter" key={index} >
           <div
-            className="card mx-4 my-2"
+            className="card mx-4 my-2 zoom"
               style={{
               
-              width: "20rem",
+              width: "12rem",
               
               padding: "20px",
               marginLeft: "50px",
@@ -81,13 +81,13 @@ function Cards(props) {
           >
             <img src={product.image} className="card-img-top" alt="..." />
             <div className="card-body">
-              <h5 className="card-title">{product.title.substring(0, 20)}</h5>
+              <p className="card-title">{product.title.substring(0, 20)}</p>
 
-              <p  className="card-text">
+              {/* <p  className="card-text">
                 
                 {product.description.substring(0, 80) + "..."}
-              </p>
-                <p>{ product.id}</p>
+              </p> */}
+                {/* <p>${ product.price}</p> */}
               <button
                   onClick={()=> addToCartHandler(product)}
                   className="btn btn-primary"
@@ -95,9 +95,7 @@ function Cards(props) {
               >
                 Add to cart
               </button>
-              <a href="/" className="btn btn-success mx-4 ">
-                Buy Now
-              </a>
+            
             </div>
           </div>
         </div>)}
